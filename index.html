@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./Styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read JSON Entry One at a Time</title>
+  </head>
+  <body id="Form-Body">
+    <h1 id="Title">Taboo</h1>
+    <p id="Connection-Status">Connecting...</p>
+    <div id="jsonData"></div>
+
+    <div class="Maxlength">
+      <div id="WordDefinition"></div>
+    </div>
+    <div class="Maxlength">
+      <button id="RandomButton">Random one</button>
+    </div>
+    <input id="AdminAccess" type="text" />
+
+    <script src="connections.js"></script>
+    <script>
+      let jsonArray = [];
+      let currentIndex = 0;
+
+      // Fetch JSON data
+      fetch("taboo.json")
+        .then((response) => response.json())
+        .then((data) => {
+          jsonArray = data;
+          displayEntry(); // Initial display
+        })
+        .catch((error) => console.error("Error fetching JSON:", error));
+
+      function displayEntry() {
+        const jsonDataDiv = document.getElementById("jsonData");
+        const randNum = getRandomIndex();
+        const entry = jsonArray[randNum];
+
+        if (entry) {
+          // Display on the main window
+          document.getElementById("WordDefinition").innerHTML = `${JSON.stringify(entry.GoogleAIDesc)}`;
+
+          // Check if newwindow is open
+          if (newwindow && !newwindow.closed) {
+            newwindow.document.getElementById("WordDefinitions").innerHTML = `
+              <h1 class='TabooText'>Selected Word: ${entry.Mainword}</h1>
+              <h3 class='TabooText'>Illegal Word One: ${entry.illegal1}</h3>
+              <h3 class='TabooText'>Illegal Word Two: ${entry.illegal2}</h3>
+              <h3 class='TabooText'>Illegal Word Three: ${entry.illegal3}</h3>
+              <h3 class='TabooText'>Illegal Word Four: ${entry.illegal4}</h3>`;
+          }
+        }
+
+        // Remove the used entry from the array
+        jsonArray.splice(randNum, 1);
+      }
+
+      function getRandomIndex() {
+        return Math.floor(Math.random() * jsonArray.length);
+      }
+
+      document.getElementById("RandomButton").addEventListener("click", () => {
+        displayEntry(); // Display the next entry
+      });
+
+      document.getElementById("AdminAccess").addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          SendPass();
+        }
+      });
+
+      window.onbeforeunload = () => {
+        if (newwindow && !newwindow.closed) {
+          newwindow.close();
+        }
+      };
+    </script>
+  </body>
+</html>
