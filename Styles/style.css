@@ -1,110 +1,62 @@
-/* Root Variables */
-:root {
-  --card-height: 65vh;
-  --card-width: calc(var(--card-height) / 1.5);
-}
-
-/* Global Reset */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
   background: linear-gradient(135deg, #667292 0%, #16222a 100%);
   color: white;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-/* Title Section */
 #Title {
+  background-color: #323641;
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 30px;
   width: 100%;
-  height: 10%;
-  align-self: flex-start;
   border-bottom: 2px solid black;
 }
 
-/* Word Definition Card */
-#WordDefinition {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--card-width);
-  height: var(--card-height);
-  border: 5px solid black;
-  border-radius: 25px;
-  background-color: rgba(106, 90, 205, 0.5);
-}
-
-/* General Centering Utility (A grand idea)*/
-.Maxlength {
+#Taboo-Container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-}
-
-#Connection-Status {
-  display: flex;
-  justify-content: center;
-  justify-self: flex-start;
+  height: 70%;
 }
 
 #RandomButton {
+  font-size: xx-large;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 20vw;
-  height: 5vh;
-
-  transition: ease-in 0.2s;
-
-  background-color: rgba(106, 90, 205, 0.5);
-  border: 4px solid black;
-  border-radius: 25px;
+  width: 100%;
+  height: 8%;
+  border-radius: 500px;
+  transition: ease-in-out 0.2s;
 }
 
 #RandomButton:hover {
-  background-color: blueviolet;
-  width: 25vw;
-  height: 5vh;
-  transition: ease-in 0.2s;
+  border: 2px solid black;
+  height: 10%;
+  border-radius: 250px;
+
+  transition: ease-in-out 0.2s;
 }
-
-#AdminAccess-Container {
-  display: flex;
-
-  width: 100%;
-  height: 5vh;
-  justify-content: center;
-  align-items: center;
+#RandomButton:active {
+  background-color: grey;
 }
-
-#AdminAccess {
+#Question {
+  font-size: 2vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
-  height: 100%;
-  border: 4px solid black;
-  border-radius: 50px;
-  transition: ease-in 0.6s;
-  text-align: center;
-}
-
-#AdminAccess:focus {
-  background-color: rgb(106, 90, 205);
   width: 100%;
-  transition: ease-in 0.6s;
+  height: 10%;
 }
