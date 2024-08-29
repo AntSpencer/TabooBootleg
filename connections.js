@@ -1,5 +1,4 @@
-const ws = new WebSocket("wss://your-render-app.onrender.com");
-
+const ws = new WebSocket("wss://taboobootleg.onrender.com");
 ws.onopen = () => {
   console.log("WebSocket opened in the browser");
   ws.send("Client Successfully Connected");
@@ -10,6 +9,11 @@ ws.onmessage = (message) => {
 
   if (message.data === "Granted") {
     // Ensure `newwindow` is properly initialized and used
+    const field = document.getElementById("AdminAccess");
+    field.value = "Admin Terminal Open!";
+    field.setAttribute("readonly", true);
+    field.style.width = "40%";
+    field.style.backgroundColor = "cyan";
     globalThis.newwindow = window.open("", "_blank");
     if (newwindow) {
       newwindow.document.write(
@@ -39,4 +43,3 @@ function SendPass() {
     console.error("Admin Access field is empty");
   }
 }
-3;

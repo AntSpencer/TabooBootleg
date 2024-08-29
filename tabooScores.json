@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Alice",
+    "total_score": 1,
+    "total_taboos": 3
+  },
+  {
+    "name": "Bob",
+    "total_score": 2,
+    "total_taboos": 5
+  },
+  {
+    "name": "Charlie",
+    "total_score": 3,
+    "total_taboos": 2
+  }
+]

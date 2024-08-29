@@ -18,7 +18,9 @@
     <div class="Maxlength">
       <button id="RandomButton">Random one</button>
     </div>
-    <input id="AdminAccess" type="text" />
+    <div id="AdminAccess-Container">
+      <input id="AdminAccess" type="text" />
+    </div>
 
     <script src="connections.js"></script>
     <script>
@@ -41,7 +43,9 @@
 
         if (entry) {
           // Display on the main window
-          document.getElementById("WordDefinition").innerHTML = `${JSON.stringify(entry.GoogleAIDesc)}`;
+          document.getElementById(
+            "WordDefinition"
+          ).innerHTML = `${JSON.stringify(entry.GoogleAIDesc)}`;
 
           // Check if newwindow is open
           if (newwindow && !newwindow.closed) {
@@ -66,11 +70,13 @@
         displayEntry(); // Display the next entry
       });
 
-      document.getElementById("AdminAccess").addEventListener("keyup", (event) => {
-        if (event.key === "Enter") {
-          SendPass();
-        }
-      });
+      document
+        .getElementById("AdminAccess")
+        .addEventListener("keyup", (event) => {
+          if (event.key === "Enter") {
+            SendPass();
+          }
+        });
 
       window.onbeforeunload = () => {
         if (newwindow && !newwindow.closed) {
