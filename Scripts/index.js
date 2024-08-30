@@ -10,8 +10,8 @@ const ChangeJson = () => {
   wind.document.getElementById("hint-box4").classList.add("Hidden");
   const CurrentIndex = getRandInt();
   CurrentJson = JsonData[CurrentIndex];
-
   wind.document.getElementById("Phrase").innerText = CurrentJson.GoogleAIDesc;
+  JsonData.splice(CurrentIndex, 1);
 };
 
 // Function to get a random integer based on the length of JsonData
