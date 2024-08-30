@@ -17,7 +17,7 @@ body {
 }
 
 #Title {
-  background-image: linear-gradient(to botto#003366, black);
+  background-image: linear-gradient(to bottom, #003366, black);
   display: flex;
   justify-content: center;
   align-items: center;
