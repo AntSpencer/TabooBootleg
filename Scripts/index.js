@@ -11,6 +11,8 @@ const ChangeJson = () => {
   const CurrentIndex = getRandInt();
   CurrentJson = JsonData[CurrentIndex];
   wind.document.getElementById("Phrase").innerText = CurrentJson.GoogleAIDesc;
+  document.getElementById("CurrentWord").innerText = CurrentJson.Mainword;
+
   JsonData.splice(CurrentIndex, 1);
 };
 
